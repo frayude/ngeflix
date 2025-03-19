@@ -1,5 +1,5 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Irish+Grover&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
   --primary-color: #000000;
@@ -18,7 +18,7 @@
 body {
   background-color: var(--primary-color);
   color: var(--text-color);
-  font-family: "Inter", serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* Header */
@@ -32,13 +32,9 @@ body {
   margin: 10px;
 }
 
-/* Logo (Title) tetap di kiri */
 .navbar .logo {
-  font-family: "Irish Grover", serif;
-  font-size: 2.1rem;
-  color: #e52020;
-  letter-spacing: 5px;
-  /* text-transform: uppercase; */
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
 .navbar .nav-search {
@@ -62,8 +58,8 @@ body {
 
 /* Style link */
 .navbar .nav-menu a {
-  color: var(--text-color);
-  font-size: 1.1rem;
+  color: white;
+  font-size: 1rem;
   transition: 0.3s;
 }
 
@@ -84,7 +80,6 @@ body {
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  color: white; /* Warna ikon disesuaikan dengan tema gelap */
   cursor: pointer;
 }
 
@@ -94,21 +89,18 @@ body {
   border: none;
   border-radius: 10px;
   background: #333; /* Warna input disesuaikan dengan tema gelap */
-  color: white;
 }
 
 /* Hero */
 .hero {
-  position: relative;
   width: 100%;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  transition: background 0.5s ease-in-out;
+  height: 80vh;
   background-size: cover;
+  position: relative;
   background-position: center;
+  overflow: hidden; /* pake ini biar element di hero content kalo pake margin tidak ngikut si hero nya soalnya colapse*/
+  transition: background 0.5s ease-in-out;
+  font-weight: 400;
 }
 
 .hero::before {
@@ -122,148 +114,139 @@ body {
   z-index: 1;
 }
 
+/* Hero content */
 .hero-content {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.hero-content .hero-title {
+  font-size: 1.1rem;
+  border-radius: 10px;
+  width: max-content;
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  margin-left: 50px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
+  font-weight: 600;
+}
+
+/* Hero Content Detail */
+.hero-details {
   display: flex;
   flex-direction: column;
-  padding-left: 200px; /* Jarak dari kiri */
-  gap: 15px;
-  z-index: 2; /* Biar teks di atas overlay */
-}
-
-.movie-info {
-  font-size: 0.9rem;
-}
-
-.movie-info .title-hero {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: red;
-  color: white;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: bold;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  top: 6rem;
+  left: 40%;
+  transform: translateX(-50%);
+  padding: 20px;
+  margin: 10px 0;
+  gap: 15px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
 }
 
-.movie-info .movie-title {
-  font-family: "Atkinson Hyperlegible Next", serif;
-  color: white;
+.hero-details .movie-title {
   text-transform: uppercase;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Efek bayangan biar teks tetap terbaca */
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.movie-info .movie-description {
-  width: 50%;
+.hero-details .movie-summary {
   font-size: 0.9rem;
-  text-align: justify;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Efek bayangan biar teks tetap terbaca */
-  line-height: 1.9;
+  line-height: 1.6;
+  font-weight: normal;
 }
 
-.movie-info .genre {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 3px;
-  border-radius: 5px;
-  background: #222;
-  color: #fff;
-  font-size: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+/* Hero details rows */
+.hero-details .details-row {
+  display: flex;
+  font-weight: normal;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
 }
 
-.movie-info .genre:hover {
-  border: 1px solid #fff;
-  box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
-  cursor: pointer;
+.details-row .movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.watch-btn {
-  width: 15%;
-  padding: 10px 15px;
-  background-color: #e52020;
+.movie-rating .rating-value {
+  letter-spacing: 1px;
+}
+
+.rating-star {
+  color: yellow;
+  align-self: center;
+}
+
+.hero-details .trailer-btn {
   color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 0.8rem;
+  background-color: rgba(194, 19, 19, 0.919);
   border-radius: 5px;
+  width: max-content;
+  padding: 10px;
+  border: none;
+  margin-top: 5px;
 }
 
-.hero-content .watch-btn:hover {
-  background-color: #700000;
+.trailer-btn .trailer-btn-text {
+  margin-right: 3px;
+  font-size: 0.8rem;
+}
+
+.trailer-btn:hover {
+  cursor: pointer;
 }
 
 .hero-content .hero-arrows {
-  position: absolute; /* Tambahkan ini */
-  top: 50%; /* Posisikan di tengah vertikal */
-  left: 50%; /* Posisikan di tengah horizontal */
-  transform: translate(-50%, -50%); /* Geser ke tengah */
+  position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 100%; /* Lebar penuh */
-  max-width: 1200px; /* Batas maksimum lebar */
-  padding: 0 20px; /* Padding untuk jarak dari tepi */
+  align-items: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hero-arrows i {
-  font-size: 1.5rem; /* Ukuran ikon */
-  cursor: pointer; /* Pointer cursor */
-  transition: color 0.3s ease; /* Transisi warna */
+  font-size: 1.5rem;
+  padding: 0 40px;
 }
 
-.hero-arrows i:hover {
-  color: #950101; /* Warna saat hover */
-}
-
-/* Main */
-/* Trending */
-.data {
-  padding: 25px;
-  margin: 20px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 20px;
-}
-
-.data h1 {
-  grid-column: 1 / -1; /* Memaksa judul mengambil seluruh kolom */
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-}
-
-.data h1:hover {
-  color: #950101;
-}
-
-.card {
-  width: 100%; /* Pastikan card mengisi kolom */
-  max-width: 300px; /* Batas maksimum lebar card */
-  transition: transform 0.3s ease;
-  margin: 0 auto; /* Pusatkan card dalam kolom */
-}
-
-.card:hover {
-  transform: translateY(-5px);
+.hero-arrows:hover {
   cursor: pointer;
 }
 
-.card img {
-  width: 100%; /* Gambar mengisi lebar card */
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
+/* Pagination Bar */
+.hero-content .pagination-bar {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card span {
-  display: block;
-  padding: 5px;
-  font-size: 0.9rem;
+.pagination-bar .pagination-step {
+  width: 40px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: background-color 0.3s, width 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination-step .active {
+  width: 50px;
+  background-color: white;
 }
 
 /* Footer */

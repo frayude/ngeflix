@@ -1,5 +1,5 @@
 {
-  "name": "moviy",
+  "name": "ngeflix",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
@@ -12,5 +12,9 @@
   "description": "",
   "devDependencies": {
     "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "node-cache": "^5.1.2"
   }
 }

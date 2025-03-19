@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moviy</title>
+    <title>Ngeflix</title>
 
     <!-- icon -->
-    <link rel="icon" href="public/moviy.svg" type="icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
 
     <!-- Font Awesome -->
     <link
@@ -20,7 +20,7 @@
   <body>
     <header>
       <nav class="navbar">
-        <h1 class="logo">Moviy</h1>
+        <h1 class="logo">Ngeflix</h1>
 
         <div class="nav-search">
           <form class="search-bar">
@@ -43,13 +43,33 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
-        <div class="movie-info"></div>
+        <h1 class="hero-title">Today's Trending Movies!🔥</h1>
 
-        <button class="watch-btn">Watch Now</button>
+        <div class="hero-details">
+          <h1 class="movie-title"></h1>
+          <span class="movie-summary"></span>
+
+          <!-- Biar dia jadi row -->
+          <div class="details-row">
+            <span class="movie-genre"></span>
+            <span class="movie-release-date"></span>
+            <i class="fa-solid fa-star rating-star"></i>
+            <span class="movie-rating"></span>
+          </div>
+
+          <button class="trailer-btn">
+            <span class="trailer-btn-text">Play Trailer</span>
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
 
         <div class="hero-arrows">
           <i class="fa-solid fa-chevron-left"></i>
           <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <div class="pagination-bar">
+          <div class="pagination-step active"></div>
         </div>
       </div>
     </section>
@@ -59,7 +79,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2025 Moviy. All rights reserved.</p>
+      <p>&copy; 2025 Ngeflix. All rights reserved.</p>
     </footer>
 
     <script type="module" src="src/main.js"></script>
