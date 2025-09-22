@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngeflix</title>
+
+    <!-- icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">Ngeflix</h1>
+
+        <div class="nav-search">
+          <form class="search-bar">
+            <span class="search-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input type="text" class="search" placeholder="Search here... " />
+          </form>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">TV Series</a></li>
+          <li><a href="#">Genre</a></li>
+          <li><a href="#">Year</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Today's Trending Movies!🔥</h1>
+
+        <div class="hero-details">
+          <h1 class="movie-title"></h1>
+          <span class="movie-summary"></span>
+
+          <!-- Biar dia jadi row -->
+          <div class="details-row">
+            <span class="movie-genre"></span>
+            <span class="movie-release-date"></span>
+            <span class="movie-rating"></span>
+          </div>
+
+          <button class="trailer-btn">
+            <span class="trailer-btn-text">Play Trailer</span>
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+
+        <div class="hero-arrows">
+          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <div class="pagination-bar"></div>
+      </div>
+    </section>
+
+    <!-- Main -->
+    <main id="main-content"></main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Ngeflix. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

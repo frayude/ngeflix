@@ -1,0 +1,256 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --primary-color: #000000;
+  --secondary-color: rgb(240, 240, 240);
+  --text-color: #fbfbfb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+}
+
+/* Header */
+/* Navbar */
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.navbar .nav-search {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Menu tengah */
+.navbar .nav-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu kanan (Login & Sign Up) */
+.navbar .nav-menu {
+  display: flex;
+  gap: 15px;
+}
+
+/* Style link */
+.navbar .nav-menu a {
+  color: white;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.navbar .nav-menu a:hover {
+  color: #e52020;
+}
+
+/* Search Bar */
+.nav-search .search-bar {
+  position: relative;
+  width: 350px;
+  max-width: 100%; /* Biar gak kepanjangan */
+}
+
+.nav-search .search-icon {
+  position: absolute;
+  right: 10px; /* Posisi ikon dari kiri */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.nav-search .search {
+  width: 100%;
+  padding: 10px 15px; /* Padding kiri diperbesar untuk ikon */
+  border: none;
+  border-radius: 10px;
+  background: #333; /* Warna input disesuaikan dengan tema gelap */
+}
+
+/* Hero */
+.hero {
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  overflow: hidden; /* pake ini biar element di hero content kalo pake margin tidak ngikut si hero nya soalnya colapse*/
+  transition: background 0.5s ease-in-out;
+  font-weight: 400;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+  z-index: 1;
+}
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.hero-content .hero-title {
+  font-size: 1.1rem;
+  border-radius: 10px;
+  width: max-content;
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  margin-left: 50px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
+  font-weight: 600;
+}
+
+/* Hero Content Detail */
+.hero-details {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 6rem;
+  left: 40%;
+  transform: translateX(-50%);
+  padding: 20px;
+  margin: 10px 0;
+  gap: 15px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
+}
+
+.hero-details .movie-title {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-details .movie-summary {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-weight: normal;
+}
+
+/* Hero details rows */
+.hero-details .details-row {
+  display: flex;
+  font-weight: normal;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+}
+
+.details-row .movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.movie-rating .rating-value {
+  letter-spacing: 1px;
+}
+
+.rating-star {
+  color: yellow;
+  align-self: center;
+}
+
+.hero-details .trailer-btn {
+  color: white;
+  background-color: rgba(194, 19, 19, 0.919);
+  border-radius: 5px;
+  width: max-content;
+  padding: 10px;
+  border: none;
+  margin-top: 5px;
+}
+
+.trailer-btn .trailer-btn-text {
+  margin-right: 3px;
+  font-size: 0.8rem;
+}
+
+.trailer-btn:hover {
+  cursor: pointer;
+}
+
+.hero-content .hero-arrows {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-arrows i {
+  font-size: 1.5rem;
+  padding: 0 40px;
+}
+
+.hero-arrows:hover {
+  cursor: pointer;
+}
+
+/* Pagination Bar */
+.hero-content .pagination-bar {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-bar .pagination-step {
+  width: 40px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: background-color 0.3s, width 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination-step.active {
+  width: 50px;
+  background-color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+}
