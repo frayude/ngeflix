@@ -8,13 +8,6 @@ const getGenres = async (req, res) => {
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
     );
 
-    // const genreMap = data.genres.reduce((acc, genre) => {
-    //   if (genre.id && genre.name) {
-    //     acc[genre.id] = genre.name;
-    //   }
-
-    //   return acc;
-    // }, {});
     res.json(response.data.genres);
   } catch (error) {
     res

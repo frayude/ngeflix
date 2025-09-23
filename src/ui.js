@@ -7,6 +7,8 @@ const releaseDate = document.querySelector(".movie-release-date");
 const heroArrows = document.querySelector(".hero-arrows");
 const movieRating = document.querySelector(".movie-rating");
 const paginationBar = document.querySelector(".pagination-bar");
+const trailerBtn = document.querySelector(".trailer-btn");
+import { fetchMovieTrailer } from "./api.js";
 
 let currentIndex = 0; // Buat nyimpen index sekarang
 let moviesData = [];
@@ -16,27 +18,28 @@ export function updateHero(movies, genres) {
   moviesData = movies;
   movieGenres = genres;
 
-  const movieIndex = moviesData[currentIndex];
+  const currentMovie = moviesData[currentIndex];
 
-  updateMovieDetail(movieIndex);
+  updateMovieDetail(currentMovie);
   totalDataMethod(movies);
+  getTrailerMovieKey(currentMovie);
 }
 
 // Update Detail Movie
-function updateMovieDetail(movieIndex) {
+function updateMovieDetail(movie) {
   // memanggil moviereleaseadate menggunakan destructuring dari function changereleasedate
-  const { movieReleaseDate } = formatReleaseDate(movieIndex);
+  const { movieReleaseDate } = formatReleaseDate(movie);
 
   // memanggil function yang berisi data-data genre
-  const genreNames = mapGenresToNames(movieGenres, movieIndex.genre_ids);
+  const genreNames = mapGenresToNames(movieGenres, movie.genre_ids);
 
-  const voteAverage = formatRating(movieIndex.vote_average);
+  const voteAverage = formatRating(movie.vote_average);
 
   // change bg agar sesuai dengan data nya
-  heroSection.style.backgroundImage = `url(${imageUrl}${movieIndex.backdrop_path})`;
+  heroSection.style.backgroundImage = `url(${imageUrl}${movie.backdrop_path})`;
 
-  movieTitle.textContent = movieIndex.title;
-  movieSummary.textContent = movieIndex.overview;
+  movieTitle.textContent = movie.title;
+  movieSummary.textContent = movie.overview;
   movieGenre.innerHTML = genreNames;
   releaseDate.textContent = movieReleaseDate;
   movieRating.innerHTML = `<span class="rating-value">${voteAverage} <i class="fa-solid fa-star"></i></span>
@@ -57,6 +60,41 @@ function totalDataMethod(params) {
     paginationBar.appendChild(paginationStep);
   });
 }
+
+// data kosong dibuat null agar bisa digunakan ditempat lain atau line 72
+let currentTrailerMovieKey = null;
+
+// ambil trailer movie key dari id
+async function getTrailerMovieKey(movie) {
+  // ambil trailer movie key dari id
+  const movieTrailers = await fetchMovieTrailer(movie.id);
+
+  // data hasil dari filter movie
+  currentTrailerMovieKey = filterMovieTrailer(movieTrailers);
+}
+
+function filterMovieTrailer(movieTrailers) {
+  const found = movieTrailers
+    .filter((item) => item.site === "YouTube")
+    .filter((item) => item.type === "Trailer")
+    .find((item) => item.key);
+
+  // Ketika tidak ditemukan maka kembalikan null/data tidak ada
+  return found ? found.key : null;
+}
+
+trailerBtn.addEventListener("click", () => {
+  if (!currentTrailerMovieKey) {
+    alert("Trailer belum ada🥺");
+    return;
+  }
+
+  // ketika button di klik maka akan menampilkan sesuai dengan yg sedang ditampilkan
+  window.open(
+    `https://www.youtube.com/watch?v=${currentTrailerMovieKey}`,
+    "_blank"
+  );
+});
 
 // Ratings
 function formatRating(voteAverage) {

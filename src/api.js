@@ -30,17 +30,19 @@ export async function fetchMovieGenres() {
   }
 }
 
-// export async function fetchMoviesTrailer(movieId) {
-//   try {
-//     const response = await fetch(`api/movies/${movieId}/trailer`);
+export async function fetchMovieTrailer(movieId) {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/movieTrailer/${movieId}`
+    );
 
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-//     return await response.json();
-//   } catch (error) {
-//     console.error("Fetch trailer error,", error);
-//     return {};
-//   }
-// }
+    return await response.json();
+  } catch (error) {
+    console.error("Fetch trailer error", error);
+    return {};
+  }
+}

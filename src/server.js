@@ -8,7 +8,7 @@ import movieRoutes from "./routes/movies.js";
 const app = express();
 const PORT = 3000;
 
-dotenv.config({ path: "../.env" });
+dotenv.config({ path: "../.env" }); // read env file
 
 // middleware / fucntion yang dieksekusi sebelom request nyampe ke  endpoint
 app.use(cors());
@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 
 app.use("/", movieRoutes);
 app.use("/genres", movieRoutes);
+app.use("/movieTrailer/:id", movieRoutes);
 
 // Category Movie Lists : Now Playing, Popular, Top Rated, Upcoming
 // app.get("/movies/:category", async (req, res) => {
