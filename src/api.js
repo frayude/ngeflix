@@ -46,3 +46,18 @@ export async function fetchMovieTrailer(movieId) {
     return {};
   }
 }
+
+export async function fetchPopularMovies() {
+  try {
+    const response = await fetch("http://localhost:3000/popularMovies");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status : ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Fetch trailer error", error);
+    return {};
+  }
+}

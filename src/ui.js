@@ -1,14 +1,23 @@
+import { createElement } from "react";
+import { fetchMovieTrailer } from "./api.js";
 const imageUrl = "https://image.tmdb.org/t/p/original/"; // Base URL buat gambar
 const heroSection = document.querySelector(".hero");
-const movieTitle = document.querySelector(".movie-title");
-const movieSummary = document.querySelector(".movie-summary");
-const movieGenre = document.querySelector(".movie-genre");
-const releaseDate = document.querySelector(".movie-release-date");
+const heroMovieTitle = document.querySelector(".hero-movie-title");
+const heroMovieSummary = document.querySelector(".hero-movie-summary");
+const heroMovieGenre = document.querySelector(".hero-movie-genre");
+const heroMovieReleaseDate = document.querySelector(".hero-movie-release-date");
 const heroArrows = document.querySelector(".hero-arrows");
-const movieRating = document.querySelector(".movie-rating");
+const heroMovieRating = document.querySelector(".hero-movie-rating");
 const paginationBar = document.querySelector(".pagination-bar");
 const trailerBtn = document.querySelector(".trailer-btn");
-import { fetchMovieTrailer } from "./api.js";
+const popularMovies = document.querySelector(".popular-movies");
+const popularMovieCard = document.querySelector(".popular-movie-card");
+const popularMoviePoster = document.querySelector(".popular-movie-poster");
+const popularMovieRating = document.querySelector(".popular-movie-rating");
+const popularMovieName = document.querySelector(".popular-movie-name");
+const popularMovieReleaseDate = document.querySelector(
+  ".popular-movie-release-date"
+);
 
 let currentIndex = 0; // Buat nyimpen index sekarang
 let moviesData = [];
@@ -27,8 +36,8 @@ export function updateHero(movies, genres) {
 
 // Update Detail Movie
 function updateMovieDetail(movie) {
-  // memanggil moviereleaseadate menggunakan destructuring dari function changereleasedate
-  const { movieReleaseDate } = formatReleaseDate(movie);
+  // memanggil moviereleaseadate menggunakan destructuring dari function change releasedate
+  const { fullDate } = formatReleaseDate(movie);
 
   // memanggil function yang berisi data-data genre
   const genreNames = mapGenresToNames(movieGenres, movie.genre_ids);
@@ -38,11 +47,11 @@ function updateMovieDetail(movie) {
   // change bg agar sesuai dengan data nya
   heroSection.style.backgroundImage = `url(${imageUrl}${movie.backdrop_path})`;
 
-  movieTitle.textContent = movie.title;
-  movieSummary.textContent = movie.overview;
-  movieGenre.innerHTML = genreNames;
-  releaseDate.textContent = movieReleaseDate;
-  movieRating.innerHTML = `<span class="rating-value">${voteAverage} <i class="fa-solid fa-star"></i></span>
+  heroMovieTitle.textContent = movie.title;
+  heroMovieSummary.textContent = movie.overview;
+  heroMovieGenre.innerHTML = genreNames;
+  heroMovieReleaseDate.textContent = fullDate;
+  heroMovieRating.innerHTML = `<span class="rhero-ating-value">${voteAverage} <i class="fa-solid fa-star"></i></span>
   `;
 }
 
@@ -63,7 +72,6 @@ function totalDataMethod(params) {
 
 // data kosong dibuat null agar bisa digunakan ditempat lain atau line 72
 let currentTrailerMovieKey = null;
-
 // ambil trailer movie key dari id
 async function getTrailerMovieKey(movie) {
   // ambil trailer movie key dari id
@@ -104,8 +112,8 @@ function formatRating(voteAverage) {
 }
 
 // Get year rn
-function formatReleaseDate(data) {
-  let movieReleaseDate = new Date(data.release_date);
+function formatReleaseDate(movie) {
+  let movieReleaseDate = new Date(movie.release_date);
 
   // Ambil bagian tanggal, bulan (pakai nama singkatan), dan tahun
   let day = movieReleaseDate.getDate();
@@ -114,7 +122,9 @@ function formatReleaseDate(data) {
 
   // Menggabungkan dan mengganti format dari release date
   // Menggunakan return agar data bisa digunakan kembali
-  return { movieReleaseDate: `${day} ${month} ${year}` };
+  const fullDate = `${day} ${month} ${year}`;
+
+  return { fullDate, day, month, year };
 }
 
 // Event listener buat arrow click
@@ -156,4 +166,49 @@ function mapGenresToNames(genresData, genreIds) {
       (id) => `<span class="genre-badge">${genreMap[id] || "Unknown"}</span>`
     )
     .join(", ");
+}
+
+export function getPopularMovies(movies) {
+  const updatePopularMovieCard = movies
+    .map((movie) => {
+      const voteAverage = formatRating(movie.vote_average);
+      const { year } = formatReleaseDate(movie);
+
+      return `<div class="popular-movie-card">
+      <div class="popular-movie-poster-card">
+        <div class="popular-movie-poster" style="background-image:url(${imageUrl}${movie.poster_path})"> 
+        <span class="popular-movie-rating">${voteAverage} <i class="fa-solid fa-star"></i></span>
+        </div>
+      </div>
+
+      <div class="popular-movie-info">
+        <span class="popular-movie-name">${movie.title}</span>
+        <span class="popular-movie-release-date">${year}</span>
+      </div>
+    </div>`;
+    })
+    .join("");
+
+  // let variabelKosong = "";
+  // movies.forEach((movie) => {
+  //   const voteAverage = formatRating(movies.vote_average);
+  //   const { movieReleaseDate } = formatReleaseDate(movies);
+
+  //   variabelKosong += `
+
+  //   <div class="popular-movie-card">
+  //     <div class="popular-movie-poster-card">
+  //       <div class="popular-movie-poster" style="background-image:url(${imageUrl}${movie.poster_path})">
+  //       <span class="popular-movie-rating">${voteAverage}</span>
+  //       </div>
+  //     </div>
+
+  //     <div class="popular-movie-info">
+  //       <span class="popular-movie-name">${movie.title}</span>
+  //       <span class="popular-movie-release-date">${movieReleaseDate}</span>
+  //     </div>
+  //   </div>`;
+  // });
+
+  popularMovieCard.innerHTML = updatePopularMovieCard;
 }

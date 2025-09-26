@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/", movieRoutes);
 app.use("/genres", movieRoutes);
 app.use("/movieTrailer/:id", movieRoutes);
+app.use("popularMovies", movieRoutes);
 
 // Category Movie Lists : Now Playing, Popular, Top Rated, Upcoming
 // app.get("/movies/:category", async (req, res) => {
