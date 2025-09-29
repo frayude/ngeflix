@@ -261,13 +261,18 @@ body {
 }
 
 /* popular movie */
-.popular-movie-detail {
+.popular-movie-cards-wrapper {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.popular-movie-card {
+  width: 160px;
 }
 
 /* Poster */
 .popular-movie-poster-card {
-  width: 160px;
+  width: 100%;
   overflow: hidden;
 }
 
