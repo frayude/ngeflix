@@ -1,0 +1,21 @@
+@media screen and (max-width: 600px) {
+  /* Hero */
+  .hero {
+    height: 100vh;
+  }
+
+  /* popular movies */
+  .popular-movies .popular-movies-title {
+    font-size: 1.5rem;
+  }
+
+  .popular-movie-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+  }
+
+  .popular-movie-card {
+    width: 100%;
+  }
+}
