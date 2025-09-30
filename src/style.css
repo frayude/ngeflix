@@ -257,17 +257,25 @@ body {
 
 .popular-movies .popular-movies-title {
   font-size: 1.4rem;
-  padding-bottom: 20px;
+  padding: 0 0 15px 10px;
+}
+
+.popular-movies-title:hover {
+  /* cursor: pointer; */
+  color: #e52020;
 }
 
 /* popular movie */
 .popular-movie-cards-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* auto-fit & auto-fill = grid wrap */
+  /* 160 px = size kolom mau ada berapa yg atur ini */
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  width: 100%; /* biar full lebar container */
 }
 
 .popular-movie-card {
-  width: 160px;
+  margin: 10px;
 }
 
 /* Poster */
@@ -287,7 +295,8 @@ body {
 }
 
 .popular-movie-poster:hover {
-  transform: scale(1.1);
+  transform: scale(0.9);
+  cursor: pointer;
   backdrop-filter: blur(15px);
 }
 
@@ -295,7 +304,7 @@ body {
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 2px 10px;
 }
 
@@ -304,7 +313,23 @@ body {
   flex-direction: column;
   padding-top: 15px;
   gap: 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
+}
+
+.popular-movie-info .popular-movie-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popular-movie-info .popular-movie-name:hover {
+  cursor: pointer;
+  color: #e52020;
+}
+
+.popular-movie-release-date:hover {
+  cursor: pointer;
+  color: #e52020;
 }
 
 /* Footer */

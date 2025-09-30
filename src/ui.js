@@ -166,6 +166,7 @@ function mapGenresToNames(genresData, genreIds) {
 }
 
 export function getPopularMovies(movies) {
+  console.log(movies);
   const updatePopularMovieCard = movies
     .map((movie) => {
       const voteAverage = formatRating(movie.vote_average);

@@ -8,7 +8,10 @@ const getPopularMovies = async (req, res) => {
       `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
     );
 
-    res.json(response.data.results);
+    // ambil 5 film dan urutkan berdasarkan vote tertinggi
+    const sortedMovies = response.data.results.slice(0, 14);
+
+    res.json(sortedMovies);
   } catch (error) {
     res
       .status(500)
