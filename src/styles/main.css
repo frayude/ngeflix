@@ -1,6 +1,9 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+/* Responsive file */
+@import url(responsive.css);
+
 :root {
   --primary-color: #000000;
   --secondary-color: rgb(240, 240, 240);
@@ -94,10 +97,10 @@ body {
 /* Hero */
 .hero {
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   background-size: cover;
   position: relative;
-  background-position: center;
+  /* background-position: center; */
   overflow: hidden; /* pake ini biar element di hero content kalo pake margin tidak ngikut si hero nya soalnya colapse*/
   transition: background 0.5s ease-in-out;
   font-weight: 400;
@@ -255,7 +258,8 @@ body {
   margin: 20px;
 }
 
-.popular-movies .popular-movies-title {
+.popular-movies .popular-movies-title,
+.top-rated-movies .top-rated-movies-title {
   font-size: 1.4rem;
   padding: 0 0 15px 10px;
 }
@@ -266,49 +270,56 @@ body {
 }
 
 /* popular movie */
-.popular-movie-cards-wrapper {
+.popular-movie-cards-wrapper,
+.top-rated-movie-cards-wrapper {
   display: grid;
   /* auto-fit & auto-fill = grid wrap */
   /* 160 px = size kolom mau ada berapa yg atur ini */
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  width: 100%; /* biar full lebar container */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.popular-movie-card {
+.popular-movie-card,
+.top-rated-movie-card {
   margin: 10px;
+  width: 90%;
 }
 
 /* Poster */
-.popular-movie-poster-card {
+.popular-movie-poster-card,
+.top-rated-movie-poster-card {
   width: 100%;
   overflow: hidden;
 }
 
-.popular-movie-poster-card .popular-movie-poster {
+.popular-movie-poster-card .popular-movie-poster,
+.top-rated-movie-poster-card .top-rated-movie-poster {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   position: relative;
   border-radius: 10px;
-  aspect-ratio: 2/3;
+  aspect-ratio: 3/4;
   transition: transform 0.4s;
 }
 
-.popular-movie-poster:hover {
+.popular-movie-poster:hover,
+.top-rated-movie-poster:hover {
   transform: scale(0.9);
   cursor: pointer;
   backdrop-filter: blur(15px);
 }
 
-.popular-movie-poster .popular-movie-rating {
+.popular-movie-poster .popular-movie-rating,
+.top-rated-movie-poster .top-rated-movie-rating {
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 2px 10px;
 }
 
-.popular-movie-info {
+.popular-movie-info,
+.top-rated-movie-info {
   display: flex;
   flex-direction: column;
   padding-top: 15px;
@@ -316,18 +327,21 @@ body {
   font-size: 0.8rem;
 }
 
-.popular-movie-info .popular-movie-name {
+.popular-movie-info .popular-movie-name,
+.top-rated-movie-info .top-rated-movie-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.popular-movie-info .popular-movie-name:hover {
+.popular-movie-info .popular-movie-name:hover,
+.top-rated-movie-info .top-rated-movie-name:hover {
   cursor: pointer;
   color: #e52020;
 }
 
-.popular-movie-release-date:hover {
+.popular-movie-release-date:hover,
+.top-rated-movie-release-date:hover {
   cursor: pointer;
   color: #e52020;
 }

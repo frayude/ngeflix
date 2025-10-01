@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const getPopularMovies = async (req, res) => {
+const getTopRatedMovies = async (req, res) => {
   try {
     const apiKey = process.env.TMDB_API_KEY;
 
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
     );
 
     // ambil 5 film dan urutkan berdasarkan vote tertinggi
-    const sortedMovies = response.data.results.slice(0, 18);
+    const sortedMovies = response.data.results.slice(0, 12);
 
     res.json(sortedMovies);
   } catch (error) {
@@ -19,4 +19,4 @@ const getPopularMovies = async (req, res) => {
   }
 };
 
-export default getPopularMovies;
+export default getTopRatedMovies;

@@ -12,6 +12,9 @@ const trailerBtn = document.querySelector(".trailer-btn");
 const popularMovieCardsWrapper = document.querySelector(
   ".popular-movie-cards-wrapper"
 );
+const topRatedMovieCardsWrapper = document.querySelector(
+  ".top-rated-movie-cards-wrapper"
+);
 
 let currentIndex = 0; // Buat nyimpen index sekarang
 let moviesData = [];
@@ -166,7 +169,6 @@ function mapGenresToNames(genresData, genreIds) {
 }
 
 export function getPopularMovies(movies) {
-  console.log(movies);
   const updatePopularMovieCard = movies
     .map((movie) => {
       const voteAverage = formatRating(movie.vote_average);
@@ -192,4 +194,33 @@ export function getPopularMovies(movies) {
     .join("");
 
   popularMovieCardsWrapper.innerHTML = updatePopularMovieCard;
+}
+
+export function getTopRatedMovies(movies) {
+  const updateTopRatedMovieCard = movies
+
+    .map((movie) => {
+      const voteAverage = formatRating(movie.vote_average);
+      const { year } = formatReleaseDate(movie);
+
+      return `
+         <div class="top-rated-movie-cards-wrapper">
+          <div class="top-rated-movie-card">
+            <div class="top-rated-movie-poster-card">
+              <div class="top-rated-movie-poster" style="background-image:url(${imageUrl}${movie.poster_path}")>
+                <span class="top-rated-movie-rating">${voteAverage} <i class="fa-solid fa-star"></i></span>
+              </div>
+            </div>
+
+            <div class="top-rated-movie-info">
+              <span class="top-rated-movie-name">${movie.title}</span>
+              <span class="top-rated-movie-release-date">${year}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  topRatedMovieCardsWrapper.innerHTML = updateTopRatedMovieCard;
 }
