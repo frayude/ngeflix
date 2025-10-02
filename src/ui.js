@@ -15,6 +15,9 @@ const popularMovieCardsWrapper = document.querySelector(
 const topRatedMovieCardsWrapper = document.querySelector(
   ".top-rated-movie-cards-wrapper"
 );
+const newMoviesThisMonthCardsWrapper = document.querySelector(
+  ".new-movies-this-month-cards-wrapper"
+);
 
 let currentIndex = 0; // Buat nyimpen index sekarang
 let moviesData = [];
@@ -120,11 +123,11 @@ function formatReleaseDate(movie) {
   // Menggabungkan dan mengganti format dari release date
   // Menggunakan return agar data bisa digunakan kembali
 
-  // const fullDate = `${day} ${month} ${year}`;
+  const fullDate = `${day} ${month} ${year}`;
   // kalo mau pake fullDate
-  // return { fullDate, day, month, year };
+  return { fullDate, day, month, year };
 
-  return { day, month, year };
+  // return { day, month, year };
 }
 
 // Event listener buat arrow click
@@ -223,4 +226,33 @@ export function getTopRatedMovies(movies) {
     .join("");
 
   topRatedMovieCardsWrapper.innerHTML = updateTopRatedMovieCard;
+}
+
+export function getNewMoviesThisMonth(movies) {
+  console.log(movies);
+  const updateNewMoviesThisMonthCard = movies
+    .map((movie) => {
+      const voteAverage = formatRating(movie.vote_average);
+      const { fullDate } = formatReleaseDate(movie);
+
+      return `
+          <div class="new-movies-this-month-cards-wrapper">
+          <div class="new-movies-this-month-card">
+            <div class="new-movies-this-month-poster-card">
+              <div class="new-movies-this-month-poster" style="background-image:url(${imageUrl}${movie.poster_path}")>
+                <span class="new-movies-this-month-rating">${voteAverage} <i class="fa-solid fa-star"></i></span>
+              </div>
+            </div>
+
+            <div class="new-movies-this-month-info">
+              <span class="new-movies-this-month-name">${movie.title}</span>
+              <span class="new-movies-this-month-release-date">${fullDate}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  newMoviesThisMonthCardsWrapper.innerHTML = updateNewMoviesThisMonthCard;
 }

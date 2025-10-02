@@ -258,20 +258,29 @@ body {
   margin: 20px;
 }
 
-.popular-movies .popular-movies-title,
-.top-rated-movies .top-rated-movies-title {
+.new-movies-this-month,
+.top-rated-movies {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.popular-movies-title,
+.top-rated-movies-title,
+.new-movies-this-month-title {
   font-size: 1.4rem;
   padding: 0 0 15px 10px;
 }
 
-.popular-movies-title:hover {
+.popular-movies-title:hover,
+.top-rated-movies-title:hover,
+.new-movies-this-month-title:hover {
   /* cursor: pointer; */
   color: #e52020;
 }
 
 /* popular movie */
 .popular-movie-cards-wrapper,
-.top-rated-movie-cards-wrapper {
+.top-rated-movie-cards-wrapper,
+.new-movies-this-month-cards-wrapper {
   display: grid;
   /* auto-fit & auto-fill = grid wrap */
   /* 160 px = size kolom mau ada berapa yg atur ini */
@@ -279,20 +288,23 @@ body {
 }
 
 .popular-movie-card,
-.top-rated-movie-card {
+.top-rated-movie-card,
+.new-movies-this-month-card {
   margin: 10px;
   width: 90%;
 }
 
 /* Poster */
 .popular-movie-poster-card,
-.top-rated-movie-poster-card {
+.top-rated-movie-poster-card,
+.new-movies-this-poster-card {
   width: 100%;
   overflow: hidden;
 }
 
-.popular-movie-poster-card .popular-movie-poster,
-.top-rated-movie-poster-card .top-rated-movie-poster {
+.popular-movie-poster,
+.top-rated-movie-poster,
+.new-movies-this-month-poster {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -303,14 +315,16 @@ body {
 }
 
 .popular-movie-poster:hover,
-.top-rated-movie-poster:hover {
+.top-rated-movie-poster:hover,
+.new-movies-this-month-poster:hover {
   transform: scale(0.9);
   cursor: pointer;
   backdrop-filter: blur(15px);
 }
 
-.popular-movie-poster .popular-movie-rating,
-.top-rated-movie-poster .top-rated-movie-rating {
+.popular-movie-rating,
+.top-rated-movie-rating,
+.new-movies-this-month-rating {
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
@@ -319,7 +333,8 @@ body {
 }
 
 .popular-movie-info,
-.top-rated-movie-info {
+.top-rated-movie-info,
+.new-movies-this-month-info {
   display: flex;
   flex-direction: column;
   padding-top: 15px;
@@ -327,21 +342,24 @@ body {
   font-size: 0.8rem;
 }
 
-.popular-movie-info .popular-movie-name,
-.top-rated-movie-info .top-rated-movie-name {
+.popular-movie-name,
+.top-rated-movie-name,
+.new-movies-this-month-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .popular-movie-info .popular-movie-name:hover,
-.top-rated-movie-info .top-rated-movie-name:hover {
+.top-rated-movie-info .top-rated-movie-name:hover,
+.new-movies-this-month-name:hover {
   cursor: pointer;
   color: #e52020;
 }
 
 .popular-movie-release-date:hover,
-.top-rated-movie-release-date:hover {
+.top-rated-movie-release-date:hover,
+.new-movies-this-month-release-date:hover {
   cursor: pointer;
   color: #e52020;
 }

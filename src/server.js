@@ -32,21 +32,8 @@ app.use("/", movieRoutes);
 app.use("/genres", movieRoutes);
 app.use("/movieTrailer/:id", movieRoutes);
 app.use("popularMovies", movieRoutes);
-
-// Category Movie Lists : Now Playing, Popular, Top Rated, Upcoming
-// app.get("/movies/:category", async (req, res) => {
-//   const { category } = req.params;
-
-//   try {
-//     const response = await axios.get(
-//       `${URL}movie/${category}?api_key=${API_KEY}`
-//     );
-
-//     res.json(response.data);
-//   } catch (error) {
-//     res.status(500).json({ message: "error fetching data" });
-//   }
-// });
+app.use("/topRatedMovies", movieRoutes);
+app.use("/newMoviesThisMonth", movieRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
