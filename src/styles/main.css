@@ -258,16 +258,26 @@ body {
   margin: 20px;
 }
 
+.popular-movies,
 .new-movies-this-month,
 .top-rated-movies {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
 }
 
-.popular-movies-title,
+.new-movies-this-month,
+.top-rated-movies {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.popular-movies-title {
+  font-size: 1.4rem;
+  padding: 0 0 15px 10px;
+}
+
 .top-rated-movies-title,
 .new-movies-this-month-title {
   font-size: 1.4rem;
-  padding: 0 0 15px 10px;
+  padding: 20px 0 15px 10px;
 }
 
 .popular-movies-title:hover,
