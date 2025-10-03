@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngeflix</title>
+
+    <!-- icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar">
+        <h1 class="logo">
+          <a href="index.html">Ngeflix</a>
+        </h1>
+
+        <div class="nav-search">
+          <form class="search-bar">
+            <span class="search-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input type="text" class="search-input" placeholder="Search... " />
+          </form>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">TV Series</a></li>
+          <li><a href="#">Genre</a></li>
+          <li><a href="#">Year</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main id="main-content">
+      <!-- Wrapper = buat ngebungkus layout -->
+      <section class="new-movies-this-month">
+        <h1 class="new-movies-this-month-title">Search Result</h1>
+
+        <div class="new-movies-this-month-cards-wrapper">
+          <div class="new-movies-this-month-card">
+            <div class="new-movies-this-month-poster-card">
+              <div class="new-movies-this-month-poster">
+                <span class="new-movies-this-month-rating"></span>
+              </div>
+            </div>
+
+            <div class="new-movies-this-month-info">
+              <span class="new-movies-this-month-name"></span>
+              <span class="new-movies-this-month-release-date"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Ngeflix. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="src/search.js"></script>
+  </body>
+</html>

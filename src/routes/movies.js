@@ -5,6 +5,7 @@ import getMovieTrailer from "../controllers/movieTrailerController.js";
 import getPopularMovies from "../controllers/popularMoviesController.js";
 import getTopRatedMovies from "../controllers/topRatedMoviesController.js";
 import getNewMoviesThisMonth from "../controllers/newMoviesThisMonthController.js";
+import getSearch from "../controllers/searchController.js";
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.get("/movieTrailer/:id", getMovieTrailer);
 router.get("/popularMovies", getPopularMovies);
 router.get("/topRatedMovies", getTopRatedMovies);
 router.get("/newMoviesThisMonth", getNewMoviesThisMonth);
+router.get("/search", getSearch);
 
 export default router;

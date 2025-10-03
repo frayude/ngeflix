@@ -38,6 +38,12 @@ body {
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: 500;
+  text-decoration: none;
+}
+
+/* for page search */
+.navbar .logo a:visited {
+  color: white;
 }
 
 .navbar .nav-search {
@@ -86,12 +92,13 @@ body {
   cursor: pointer;
 }
 
-.nav-search .search {
+.nav-search .search-input {
   width: 100%;
   padding: 10px 15px; /* Padding kiri diperbesar untuk ikon */
   border: none;
   border-radius: 10px;
   background: #333; /* Warna input disesuaikan dengan tema gelap */
+  color: white;
 }
 
 /* Hero */

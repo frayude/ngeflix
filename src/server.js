@@ -34,6 +34,7 @@ app.use("/movieTrailer/:id", movieRoutes);
 app.use("popularMovies", movieRoutes);
 app.use("/topRatedMovies", movieRoutes);
 app.use("/newMoviesThisMonth", movieRoutes);
+app.use("/search", movieRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
